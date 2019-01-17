@@ -68,3 +68,64 @@ let player1 = {
     }
   }
 }
+
+//not finished
+let p1battle = {
+  attack: function(mv){
+    if(mv == 1){
+      return this.move.punch();
+    }
+    else if(mv == 2){
+      return this.move.other();
+    }
+  },
+  defend: function(atkmv){
+    let rawDamage = atkmv - this.stats.DEF;
+    this.stats.HP = this.stats.HP - rawDamage;
+    if(this.stats.HP < 0){
+      this.stats.HP = 0;
+    }
+  }
+}
+
+let physical = {
+  razorPunch: function(){
+    let baseDamage = this.stats.ATK * 0.75;
+    let bonus = 0.5 * this.stats.ATK * Math.random();
+    return baseDamage + bonus;
+  },
+  charge: function(){
+    let pain = Math.random();
+    let bonus = 0.5 * this.stats.ATK * Math.random();
+    if(pain < 0.50){
+      this.stats.HP = this.stats.HP - this.stats.ATK/4;
+      return this.stats.ATK + bonus;
+    }
+    else{
+      return this.stats.ATK + bonus;
+    }
+  }
+}
+
+let magic = {
+  hydroPump: function(){
+    if(this.stats.MP >= 8){
+      this.stats.MP = this.stats.MP - 8;
+      let tetradice = Math.random();
+      let pump = Math.ceil(this.stats.SP/3);
+      if(tetradice < 0.10){
+        return pump;
+      }
+      else if(tetradice < 0.30){
+        return 2*pump;
+      }
+      else if(tetradice < 0.60){
+        return 3*pump;
+      }
+      else(tetradice < 0.10){
+    
+        return 4*pump;
+      }
+    }
+  }
+}
