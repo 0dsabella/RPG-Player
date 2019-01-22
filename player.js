@@ -108,10 +108,10 @@ let physical = {
   roundhouseKick: function(){
     let tetradice = Math.random();
       let kick = Math.ceil(this.stats.ATK/2);
-      if(tetradice < 0.33){
+      if(tetradice <= 0.33){
         return kick;
       }
-      else if(tetradice < 0.66){
+      else if(tetradice <= 0.66){
         return 2*kick;
       }
       else{
@@ -131,13 +131,13 @@ let magic = {
       this.stats.MP = this.stats.MP - 8;
       let tetradice = Math.random();
       let pump = Math.ceil(this.stats.SP/3);
-      if(tetradice < 0.10){
+      if(tetradice <= 0.10){
         return pump;
       }
-      else if(tetradice < 0.30){
+      else if(tetradice <= 0.30){
         return 2*pump;
       }
-      else if(tetradice < 0.60){
+      else if(tetradice <= 0.60){
         return 3*pump;
       }
       else{
@@ -147,7 +147,7 @@ let magic = {
   },
   pyroBall: function(){
     if(this.stats.MP >= 6){
-      this.stats.Mp = this.stats.MP - 6;
+      this.stats.MP = this.stats.MP - 6;
       let baseDamage = this.stats.SP * 0.88;
       let bonus = 0.32 * this.stats.SP * Math.random();
       return baseDamage + bonus;
@@ -155,9 +155,17 @@ let magic = {
   },
   hyperBeam: function(){
     if(this.stats.MP >= 20){
-      this.stats.Mp = this.stats.MP - 20;
+      this.stats.MP = this.stats.MP - 20;
       let baseDamage = this.stats.SP * 1.5;
       return baseDamage;
+    }
+  },
+  blizzard: function(){
+    if(this.stats.MP >= 14){
+      this.stats.MP = this.stats.MP - 14;
+      let baseDamage = this.stats.SP * 1;
+      let bonus = 0.5 * this.stats.SP * Math.random();
+      return baseDamage + bonus;
     }
   }
 }
