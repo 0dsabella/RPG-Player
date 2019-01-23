@@ -10,66 +10,15 @@ let p1Stats = {
  SP: 40
 }
 
-let p2Name = "Orc";
+let p1Moves = {
 
-let p2Stats = {
-  HP: 150,
-  MP: 50,
-  ATK: 60,
-  DEF: 30,
-  SP: 30
-}
 
-let battle = {
 
-  attack: function(){},
-  defend: function(){}
+
 
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let p1Pack = [2,2,1,0,1,1,0,0];
-
-
-//Assembling your player.
-
-let player1 = {
-  name: p1Name,
-  stats: p1Stats,
-  moves: p1Moves,
-  use: function(){
-    //fill in with a ton of if and else ifs
-    
-  },
-  pack: myPack,
-  battle: {
-    attack: function(mv){
-      //fill in logic
-    },
-    defend: function(atkmv){
-      //fill in logic
-    }
-  }
-}
-
-//not finished
 let p1battle = {
   attack: function(mv){
     if(mv == 1){
@@ -87,6 +36,61 @@ let p1battle = {
     }
   }
 }
+
+
+
+let player1 = {
+  name: p1Name,
+  stats: p1Stats,
+  moves: p1Moves,
+  battle: p1battle
+}
+
+
+
+
+
+let p2Name = "Orc";
+
+let p2Stats = {
+  HP: 150,
+  MP: 50,
+  ATK: 60,
+  DEF: 30,
+  SP: 30
+}
+
+let p2battle = {
+  attack: function(mv){
+    if(mv == 1){
+      return this.move.punch();
+    }
+    else if(mv == 2){
+      return this.move.other();
+    }
+  },
+  defend: function(atkmv){
+    let rawDamage = atkmv - this.stats.DEF;
+    this.stats.HP = this.stats.HP - rawDamage;
+    if(this.stats.HP < 0){
+      this.stats.HP = 0;
+
+
+
+
+
+
+
+let player2 = {
+  name: p2Name,
+  stats: p2Stats,
+  moves:p2Moves,
+  battle: p2Battle
+}
+let p2Battle = {
+  
+}
+
 
 let physical = {
   razorPunch: function(){
